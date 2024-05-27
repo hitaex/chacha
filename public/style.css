@@ -1,0 +1,160 @@
+/* style.css */
+
+/* Import Monospace font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Monospace:wght@400&display=swap');
+
+body {
+    background-color: black;
+    color: pink;
+    font-family: 'Monospace', monospace;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid pink;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.sidebar {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: 1px solid pink;
+    height: 100%;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+}
+
+.chat-window {
+    flex-grow: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: 400px;
+    border-bottom: 1px solid pink;
+}
+
+#messages {
+    list-style: none;
+    padding: 0;
+}
+
+#messages li {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+#messages li strong {
+    margin-right: 10px;
+}
+
+form {
+    display: flex;
+    margin-top: 10px;
+}
+
+form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid pink;
+    background-color: transparent;
+    color: pink;
+    outline: none;
+    border-right: none;
+}
+
+form button {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid pink;
+    color: pink;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: pink;
+    color: black;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+#loginForm {
+    background-color: black;
+    border: 1px solid pink;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#loginForm h2 {
+    margin-top: 0;
+}
+
+#loginForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid pink;
+    background-color: transparent;
+    color: pink;
+    outline: none;
+}
+
+#loginForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid pink;
+    color: pink;
+    cursor: pointer;
+}
+
+#loginForm button:hover {
+    background-color: pink;
+    color: black;
+}
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: pink;
+    border-radius: 0; /* Remove border radius */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d7007f;
+}

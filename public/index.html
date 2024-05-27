@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Monospace&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Monospace', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 1); /* Fully opaque black */
+            z-index: 9999; /* Make sure the wall appears above everything */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #wall-text {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        #input {
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        #submit {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="wall">
+        <div id="wall-text">
+            الموقع تحت الصيانة ادخل بريدك الالكترون لتلقي اشعار الاكتمال:<br>
+            <input type="text" id="input" placeholder="Type here...">
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <form id="loginForm">
+            <h2>Login</h2>
+            <input id="loginUsername" placeholder="Username" required autocomplete="username">
+            <input id="loginPassword" type="password" placeholder="Password" required autocomplete="current-password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="header">Chat App</div>
+        <div class="sidebar">
+            <h3>Active Users</h3>
+            <ul id="userList"></ul>
+        </div>
+        <div class="chat-window">
+            <ul id="messages"></ul>
+        </div>
+        <form id="form" action="">
+            <input id="m" autocomplete="off" placeholder="Type a message"><button>Send</button>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+            var inputText = document.getElementById('input').value.trim().toLowerCase();
+            if (inputText === 'opensmsm') {
+                document.getElementById('wall').style.display = 'none';
+            } else {
+                alert('Invalid code. Please try again.');
+            }
+        });
+
+        // Prevent form submission on pressing Enter key in the input field
+        document.getElementById('input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                document.getElementById('submit').click();
+            }
+        });
+    </script>
+    <!-- SCM Music Player https://www.scmplayer.net -->
+    <script type="text/javascript" src="https://www.scmplayer.net/script.js"
+    data-config="{'skin':'skins/aquaPink/skin.css','volume':100,'autoplay':true,'shuffle':false,'repeat':1,'placement':'bottom','showplaylist':true,'playlist':[{'title':'Crystal Castles - Kerosen ','url':'https://youtu.be/JEYI-zfc544?si=TGFjmj7d5qv23lvr'},{'title':'Crystal Castles - Suffocation. ','url':'https://youtu.be/Z0NGdLr4img?si=7nxDqL3YQg-3OVSi'},{'title':'Deftones - Diamond Eyes( Deluxe. )','url':'https://youtu.be/-3UvxYwKLq0?si=4Quo-yyai-o6J5dx'},{'title':'Slipknot - 1- (SIC)','url':'https://youtu.be/X6QIC2wS7R8?si=-kBa6L8RJ4En77HD'},{'title':'Slipknot - 2- Eyeless','url':'https://youtu.be/USgLx7ZOLAQ?si=wQcCDxsGzpdOpHrv'},{'title':'Slipknot - 3- Wait n%27 Bleed','url':'https://youtu.be/GOSTlT691O8?si=ObYv_rUbkrOm3Ht0'},{'title':'Slipknot - 4- Spit it Out','url':'https://youtu.be/nki9eBx1rZk?si=FzAyI2vv2HOn8L2p'},{'title':'Slipknot - 5- Surfacing ','url':'https://youtu.be/Rk9mXFrEZkc?si=uVlA2_L9aNoKLVDA'},{'title':'Slipknot - 6- Purity ','url':'https://youtu.be/HtMxyNqQCH4?si=TzZLBWLhYPCHqFK6'},{'title':'Slipknot - 7-  IOWA ','url':'https://youtu.be/T_AgPVp1F_s?si=s8EZyjqpV31hpXfy'},{'title':'Slipknot - 8- The Virus of Life','url':'https://youtu.be/QVd5KnfTE34?si=l0sRvkxLDh8FBzz-'},{'title':'Slipknot - 9- Gehenna','url':'https://youtu.be/h4fr_x8Zp1g?si=C7hkXxGBQqT77GkY'},{'title':'Slipknot -F1 -All out life','url':'https://youtu.be/ycGD-JxIsPo?si=Dcx8zpxyBfvFpwTF'},{'title':'Slipknot -f1- Yen','url':'https://youtu.be/nDU-4-v2-xk?si=_JT-emCNxEWSr-cz'}]}">
+    </script>
+
+    <!-- SCM Music Player script end -->
+
+    <script>
+    emojify.setConfig({
+        img_dir: 'https://github.com/hassankhan/emojify.js/raw/master/images/emoji/', // Set the emoji image directory
+    });
+
+    window.onload = function() {
+        emojify.run();
+    }
+</script>
+
+</body>
+
+</html>
+
